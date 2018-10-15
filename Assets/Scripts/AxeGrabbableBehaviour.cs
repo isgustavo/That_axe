@@ -1,72 +1,120 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 public enum AxeState
 {
+    None,
     Static,
+    Attacking,
     Thrown,
     Travelling,
     Returning
 }
 
+[RequireComponent(typeof(Rigidbody))]
 public class AxeGrabbableBehaviour : OVRGrabbable
 {
     [Header("Axe")]
     [SerializeField]
     private Transform axeMeshTransform;
     [SerializeField]
-    private float axeRotationSpeedWhenTravelling;
+    private float rotationSpeedWhenTravelling;
     [SerializeField]
-    private float axeRotationSpeedWhenReturning;
+    private float rotationSpeedWhenReturning;
 
+    [Header("Events")]
     [SerializeField]
+    private UnityEvent OnGrabBegin;
+    [SerializeField]
+    private UnityEvent OnThrown;
+    [SerializeField]
+    private UnityEvent OnAttacking;
+    [SerializeField]
+    private UnityEvent OnTravelling;
+    [SerializeField]
+    private UnityEvent OnReturning;
+
+    private Rigidbody rb;
+
+    private AxeState _axeState = AxeState.None;
+    protected AxeState axeState
+    {
+        get
+        {
+            return _axeState;
+        }
+        set {
+            _axeState = value;
+            switch (_axeState)
+            {
+                case AxeState.Static:
+                    OnGrabBegin.Invoke();
+                    break;
+                case AxeState.Thrown:
+                    OnThrown.Invoke();
+                    break;
+                case AxeState.Travelling:
+                    OnTravelling.Invoke();
+                    break;
+                case AxeState.Attacking:
+                    OnAttacking.Invoke();
+                    break;
+                case AxeState.Returning:
+                    OnReturning.Invoke();
+                        break;
+                default:
+                    break;
+            }
+        }
+    }
+
     private Transform rHand;
 
-    private AxeState axeState = AxeState.Static;
     private float angularVelocityThreshold = 350f;
     private Vector3 linearVelocityWhenGrabEnd;
     private Vector3 angularVelocityWhenGrabEnd;
-    private float axeTimeWhenGrabEnd;
-    private float axeReturningTimeThreshold = 5f;
-    private float axeReturningStartTime;
-    private Vector3 axeReturningStartPosition;
-    private Vector3 axeReturningMiddlePosition;
-    private float axeReturnArcZ = 10f;
-    private float axeJourneyLength;
+    private bool isAvailableToReturn = false;
+    private float returningTimeThreshold = 1f;
+    private float returningStartTime;
+    private Vector3 returningStartPosition;
+    private Vector3 returningMiddlePosition;
+    private float returnArcZ = 10f;
+    private float journeyLength;
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
+        rHand = hand.transform;
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        rb.isKinematic = true;
+        rb.useGravity = false;
 
         axeMeshTransform.rotation = new Quaternion(0, 0, 0, 0);
-
+        isAvailableToReturn = false;
         axeState = AxeState.Static;
     }
 
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
+        rb.isKinematic = false;
+        
         if ((int)angularVelocity.x < angularVelocityThreshold)
         {
-            gameObject.GetComponent<Rigidbody>().useGravity = true;
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Rigidbody>().velocity = linearVelocity;
-            gameObject.GetComponent<Rigidbody>().angularVelocity = angularVelocity;
-
+            rb.useGravity = true;
+            rb.velocity = linearVelocity;
         }
         else
         {
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Rigidbody>().velocity = linearVelocity * 2;
-            gameObject.GetComponent<Rigidbody>().angularVelocity = angularVelocity;
-
+            rb.velocity = linearVelocity * 2;
             axeState = AxeState.Travelling;
         }
 
+        rb.angularVelocity = angularVelocity;
         linearVelocityWhenGrabEnd = linearVelocity;
         angularVelocityWhenGrabEnd = angularVelocity;
-        axeTimeWhenGrabEnd = Time.time;
+
+        StartCoroutine(WaitForReturnCoroutine());
 
         m_grabbedBy = null;
         m_grabbedCollider = null;
@@ -74,24 +122,27 @@ public class AxeGrabbableBehaviour : OVRGrabbable
 
     public void OnAxeCalled()
     {
-        if ((axeState == AxeState.Travelling || axeState == AxeState.Thrown)
-            && axeTimeWhenGrabEnd + axeReturningTimeThreshold > Time.time)
+       if ((axeState == AxeState.Travelling || axeState == AxeState.Thrown)
+            && isAvailableToReturn)
         {
-            axeState = AxeState.Returning;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
 
-            axeReturningStartTime = Time.time;
-            axeReturningStartPosition = gameObject.GetComponent<Rigidbody>().transform.position;
+            returningStartTime = Time.time;
+            returningStartPosition = gameObject.GetComponent<Rigidbody>().transform.position;
 
-            if (axeReturningStartPosition.x > 0)
+            if (returningStartPosition.x > 0)
             {
-                axeReturningMiddlePosition = axeReturningStartPosition + (rHand.position - axeReturningStartPosition) / 2 + (-Vector3.forward * axeReturnArcZ);
+                returningMiddlePosition = returningStartPosition + (rHand.position - returningStartPosition) / 2 + (-Vector3.forward * returnArcZ);
             }
             else
             {
-                axeReturningMiddlePosition = axeReturningStartPosition + (rHand.position - axeReturningStartPosition) / 2 + (Vector3.forward * axeReturnArcZ);
+                returningMiddlePosition = returningStartPosition + (rHand.position - returningStartPosition) / 2 + (Vector3.forward * returnArcZ);
             }
 
-            axeJourneyLength = Vector3.Distance(axeReturningStartPosition, rHand.position);
+            journeyLength = Vector3.Distance(returningStartPosition, rHand.position);
+
+            axeState = AxeState.Returning;
         }
     }
 
@@ -102,34 +153,66 @@ public class AxeGrabbableBehaviour : OVRGrabbable
             return;
         }
 
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        rb.useGravity = false;
+        rb.isKinematic = true;
 
         axeState = AxeState.Thrown;
     }
 
-    private void FixedUpdate()
+    protected IEnumerator WaitForReturnCoroutine()
     {
-        if (axeState == AxeState.Travelling)
+        yield return new WaitForSeconds(returningTimeThreshold);
+        isAvailableToReturn = true;
+    }
+
+    protected override void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        m_grabbedKinematic = rb.isKinematic;
+    }
+
+    protected void FixedUpdate()
+    {
+        switch (axeState)
         {
-            axeMeshTransform.Rotate(0, 0, axeRotationSpeedWhenTravelling * Time.deltaTime, Space.Self);
+            case AxeState.Static:
+                if (OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude > 3)
+                {
+                    axeState = AxeState.Attacking;
+                }
+                break;
+            case AxeState.Attacking:
+                if (OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude < 2)
+                {
+                    axeState = AxeState.Static;
+                }
+                break;
+            case AxeState.Travelling:
+                axeMeshTransform.Rotate(0, 0, rotationSpeedWhenTravelling * Time.deltaTime, Space.Self);
+                break;
+            case AxeState.Returning:
+
+                float distCovered = (Time.time - returningStartTime) * 12;
+                float fracJourney = distCovered / journeyLength;
+
+                Vector3 m1 = Vector3.Lerp(returningStartPosition, returningMiddlePosition, fracJourney);
+                Vector3 m2 = Vector3.Lerp(returningMiddlePosition, rHand.position, fracJourney);
+
+                rb.transform.position = Vector3.Lerp(m1, m2, fracJourney);
+
+                //GetComponent<AxeHapticsVibrationBehaviour>().VibrateByDistance(journeyLength, Vector3.Distance(transform.position, rHand.position));
+
+                axeMeshTransform.transform.Rotate(0, 0, rotationSpeedWhenReturning * Time.deltaTime, Space.Self);
+                break;
         }
+    }
 
-        if (axeState == AxeState.Returning)
-        {
-            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-
-            float distCovered = (Time.time - axeReturningStartTime) * 12;
-            float fracJourney = distCovered / axeJourneyLength;
-
-            Vector3 m1 = Vector3.Lerp(axeReturningStartPosition, axeReturningMiddlePosition, fracJourney);
-            Vector3 m2 = Vector3.Lerp(axeReturningMiddlePosition, rHand.position, fracJourney);
-
-            gameObject.GetComponent<Rigidbody>().transform.position = Vector3.Lerp(m1, m2, fracJourney);
-
-            axeMeshTransform.transform.Rotate(0, 0, axeRotationSpeedWhenReturning * Time.deltaTime, Space.Self);
-        }
+    protected void OnDestroy()
+    {
+        OnGrabBegin.RemoveAllListeners();
+        OnThrown.RemoveAllListeners();
+        OnTravelling.RemoveAllListeners();
+        OnReturning.RemoveAllListeners();
     }
 }
 

@@ -1,30 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class AxeCallbackPowerBehaviour : MonoBehaviour {
 
     [SerializeField]
-    private Transform centerEyeAnchorTransform;
+    protected Transform centerEyeAnchorTransform;
     [SerializeField]
-    private Transform rightHandAnchorTransform;
+    protected Transform rightHandAnchorTransform;
 
     [SerializeField]
-    private GameEvent OnAxeCallbackEvent;
+    protected UnityEvent OnAxeCallbackEvent;
 
-    private bool isEventRaiseOnce = false;
-
-    private void Update()
+    public void AvailablePower()
     {
-        if (rightHandAnchorTransform.position.y > centerEyeAnchorTransform.position.y)
+        StartCoroutine(OnListenerHandCoroutine());
+    }
+
+    public void UnavailiablePower()
+    {
+        StopAllCoroutines();
+    }
+
+    protected IEnumerator OnListenerHandCoroutine()
+    {
+        while (true)
         {
-            if (!isEventRaiseOnce)
+            if (rightHandAnchorTransform.position.y > centerEyeAnchorTransform.position.y)
             {
-                isEventRaiseOnce = true;
-                OnAxeCallbackEvent.Raise();
-            } 
+                OnAxeCallbackEvent.Invoke();
+            }
+
+            yield return new WaitForSeconds(1f);
         }
-        else
-        {
-            isEventRaiseOnce = false;
-        }
+
+    }
+
+    protected void OnDestroy()
+    {
+        OnAxeCallbackEvent.RemoveAllListeners();
     }
 }

@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class AxeCollisionBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameEvent OnAxeCollisionEvent;
+    protected UnityEvent OnAxeCollisionEvent;
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Ground")
-            OnAxeCollisionEvent.Raise();
+            OnAxeCollisionEvent.Invoke();
     }
 
-    /*private void OnCollisionEnter(Collision collision)
+    protected void OnDestroy()
     {
-        if (collision.transform.tag == "Ground")
-            OnAxeCollisionEvent.Raise();
-        
-    }*/
+        OnAxeCollisionEvent.RemoveAllListeners();
+    }
 }
 
