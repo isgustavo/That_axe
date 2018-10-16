@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AxeHapticsVibrationBehaviour : MonoBehaviour
 {
@@ -14,44 +15,40 @@ public class AxeHapticsVibrationBehaviour : MonoBehaviour
 
     public void VibrateLight()
     {
+        StopAllCoroutines();
         channel.Preempt(clipLight);
     }
 
     public void VibrateMedium()
     {
+        StopAllCoroutines();
         channel.Preempt(clipMedium);
     }
 
     public void VibrateHard()
     {
+        StopAllCoroutines();
         channel.Preempt(clipHard);
     }
 
-    public void VibrateByDistance(float inicialDistance, float current)
+    public void VibrateByDistance()
     {
-
-        float distanceFactor = inicialDistance / 3f;
-
-        if (distanceFactor * 2 < current)
-        {
-            channel.Queue(clipLight);
-        }
-        else if (distanceFactor < current)
-        {
-            channel.Queue(clipMedium);
-        }
-        else
-        {
-
-            channel.Queue(clipHard);
-        }
+        StartCoroutine(VibrateCoroutine());
     }
 
+    IEnumerator VibrateCoroutine()
+    {
+        while (true)
+        {
+            channel.Queue(clipMedium);
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
     protected void InitializeOVRHaptics()
     {
 
-        int cnt = 10;
+        int cnt = 50;
         clipLight = new OVRHapticsClip(cnt);
         clipMedium = new OVRHapticsClip(cnt);
         clipHard = new OVRHapticsClip(cnt);
@@ -59,7 +56,7 @@ public class AxeHapticsVibrationBehaviour : MonoBehaviour
         {
             clipLight.Samples[i] = i % 2 == 0 ? (byte)0 : (byte)50;
             clipMedium.Samples[i] = i % 2 == 0 ? (byte)0 : (byte)100;
-            clipHard.Samples[i] = i % 2 == 0 ? (byte)0 : (byte)250;
+            clipHard.Samples[i] = i % 2 == 0 ? (byte)100 : (byte)250;
         }
 
         clipLight = new OVRHapticsClip(clipLight.Samples, clipLight.Samples.Length);

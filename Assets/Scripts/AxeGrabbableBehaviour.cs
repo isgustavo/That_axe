@@ -37,7 +37,7 @@ public class AxeGrabbableBehaviour : OVRGrabbable
 
     private Rigidbody rb;
 
-    private AxeState _axeState = AxeState.None;
+    private AxeState _axeState = AxeState.Thrown;
     protected AxeState axeState
     {
         get
@@ -69,13 +69,14 @@ public class AxeGrabbableBehaviour : OVRGrabbable
         }
     }
 
+    [SerializeField]
     private Transform rHand;
 
     private float angularVelocityThreshold = 350f;
     private Vector3 linearVelocityWhenGrabEnd;
     private Vector3 angularVelocityWhenGrabEnd;
-    private bool isAvailableToReturn = false;
-    private float returningTimeThreshold = 1f;
+    private bool isAvailableToReturn = true;
+    private float returningTimeThreshold = .5f;
     private float returningStartTime;
     private Vector3 returningStartPosition;
     private Vector3 returningMiddlePosition;
@@ -84,7 +85,7 @@ public class AxeGrabbableBehaviour : OVRGrabbable
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
-        rHand = hand.transform;
+       
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         rb.isKinematic = true;
@@ -168,6 +169,7 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     protected override void Start()
     {
         rb = GetComponent<Rigidbody>();
+        returningStartPosition = transform.position;
         m_grabbedKinematic = rb.isKinematic;
     }
 
@@ -192,15 +194,13 @@ public class AxeGrabbableBehaviour : OVRGrabbable
                 break;
             case AxeState.Returning:
 
-                float distCovered = (Time.time - returningStartTime) * 12;
+                float distCovered = (Time.time - returningStartTime) * journeyLength;
                 float fracJourney = distCovered / journeyLength;
 
                 Vector3 m1 = Vector3.Lerp(returningStartPosition, returningMiddlePosition, fracJourney);
                 Vector3 m2 = Vector3.Lerp(returningMiddlePosition, rHand.position, fracJourney);
 
                 rb.transform.position = Vector3.Lerp(m1, m2, fracJourney);
-
-                //GetComponent<AxeHapticsVibrationBehaviour>().VibrateByDistance(journeyLength, Vector3.Distance(transform.position, rHand.position));
 
                 axeMeshTransform.transform.Rotate(0, 0, rotationSpeedWhenReturning * Time.deltaTime, Space.Self);
                 break;
