@@ -4,15 +4,44 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent (typeof(NavMeshAgent))]
-public class MonsterBehaviour : MonoBehaviour {
+public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
+{
 
     protected NavMeshAgent agent;
-    [SerializeField]
-    protected Transform playerPosition;
 
-    private void Start()
+    protected Transform player;
+
+    public bool IsActiveInHierarchy()
+    {
+        return gameObject.activeInHierarchy;
+    }
+
+    public void SetStartPosition(Vector3 position)
+    {
+        Debug.Log(position);
+        transform.position = position;
+    }
+
+    protected void OnEnable()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(playerPosition.position);
+
+        if (player == null)
+        {
+            GameObject obj = GameObject.FindGameObjectWithTag("Player");
+            if (obj == null)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                player = obj.transform;
+            }
+        }
+    }
+
+    protected void Start()
+    {
+        agent.SetDestination(player.position);
     }
 }
