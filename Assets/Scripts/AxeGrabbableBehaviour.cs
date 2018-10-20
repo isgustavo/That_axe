@@ -99,8 +99,8 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         rb.isKinematic = false;
-        
-        if ((int)angularVelocity.x < angularVelocityThreshold)
+        Debug.Log(angularVelocity.x);
+        if (Mathf.Abs((int)angularVelocity.x) < angularVelocityThreshold)
         {
             rb.useGravity = true;
             rb.velocity = linearVelocity;
@@ -173,7 +173,7 @@ public class AxeGrabbableBehaviour : OVRGrabbable
         m_grabbedKinematic = rb.isKinematic;
     }
 
-    protected void FixedUpdate()
+    protected void Update()
     {
         switch (axeState)
         {
@@ -200,7 +200,7 @@ public class AxeGrabbableBehaviour : OVRGrabbable
                 Vector3 m1 = Vector3.Lerp(returningStartPosition, returningMiddlePosition, fracJourney);
                 Vector3 m2 = Vector3.Lerp(returningMiddlePosition, rHand.position, fracJourney);
 
-                rb.transform.position = Vector3.Lerp(m1, m2, fracJourney);
+                transform.position = Vector3.Lerp(m1, m2, fracJourney);
 
                 axeMeshTransform.transform.Rotate(0, 0, rotationSpeedWhenReturning * Time.deltaTime, Space.Self);
                 break;
