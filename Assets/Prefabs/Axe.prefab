@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 65236376632965648}
   - component: {fileID: 114374852859065044}
   - component: {fileID: 114432284772936620}
+  - component: {fileID: 114383175194948172}
   - component: {fileID: 114514518963703448}
   - component: {fileID: 114069282358541218}
   - component: {fileID: 82462119752018646}
@@ -100,15 +101,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800002527650250}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.49, z: 8.8}
+  m_LocalRotation: {x: -0.012962438, y: 0.8708562, z: -0.28777936, w: 0.39827695}
+  m_LocalPosition: {x: 52.7, y: 109.7, z: 65.6}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4826849827310070}
   - {fileID: 4469799018550570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.4, y: 126.41, z: -16.8}
 --- !u!23 &23133997661431620
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -467,6 +468,34 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   rHand: {fileID: 0}
+--- !u!114 &114383175194948172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1800002527650250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a7b8735045e1c4398e6cef25b186e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionTag: Ground
+  OnCollisionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114374852859065044}
+        m_MethodName: OnAxeCollided
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114432284772936620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -519,19 +548,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a7b8735045e1c4398e6cef25b186e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnAxeCollisionEvent:
+  collisionTag: 
+  OnCollisionEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114374852859065044}
-        m_MethodName: OnAxeCollided
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
