@@ -7,6 +7,8 @@ TagManager:
   - Axe
   - AxeCollision
   - Ground
+  - Monster
+  - Leaf
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - AxeCollision
   - Ground
   - Tree
-  - 
+  - Monster
   - 
   - 
   - 

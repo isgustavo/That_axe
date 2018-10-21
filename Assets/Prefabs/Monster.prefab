@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4633728050068608}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4277237428054348}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4433698845735204}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4552080460900430}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: DownTeeth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4874863442687086}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterSpine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4611244281151250}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4331284282236158}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4129003610173248}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4101657181365314}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4524058824758264}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4110859472410376}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4125060291167124}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4085412982094594}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4594195655083488}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: UpTeeth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4613657598054742}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4383222308695322}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4344711290655098}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 4745472950248600}
   - component: {fileID: 33507641139200088}
   - component: {fileID: 23006142601706400}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Down_jaw_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4118226060934214}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4312425872614520}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRLegDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4230448291285094}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLLegDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 4542937201004506}
   - component: {fileID: 33432673957361916}
   - component: {fileID: 23636653004433734}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Down_teeth_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,8 @@ GameObject:
   - component: {fileID: 136025635383568192}
   - component: {fileID: 114187213982342204}
   - component: {fileID: 114350044285316184}
-  m_Layer: 11
+  - component: {fileID: 82576796671150666}
+  m_Layer: 13
   m_Name: Monster
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -373,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4725733976307476}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4620623283957846}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4694242048705944}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +421,7 @@ GameObject:
   - component: {fileID: 4279939401862880}
   - component: {fileID: 33369351901595640}
   - component: {fileID: 23576733971094922}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Up_teeth_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4980339752886696}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4888101622220200}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4974555536366140}
   - component: {fileID: 137494382247067814}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Body_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +484,7 @@ GameObject:
   - component: {fileID: 4278921775033886}
   - component: {fileID: 33788533789866666}
   - component: {fileID: 23811250040865650}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Horns_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4603989432705322}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4657542159096608}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRLegDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4087912210029428}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterSpine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +546,7 @@ GameObject:
   - component: {fileID: 4907713077301812}
   - component: {fileID: 33805146599672880}
   - component: {fileID: 23340807036857220}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Tongue_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4835496312025564}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4847724109799198}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4022588277803890}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4741352872287620}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4622123923864062}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4132327529216292}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterSpine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4341544067258514}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +668,7 @@ GameObject:
   - component: {fileID: 4630456654852750}
   - component: {fileID: 33105356313341194}
   - component: {fileID: 23385216849302642}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Up_jaw_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4873230189642458}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4614955675552568}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4481958351269688}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -727,7 +728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4588243409018634}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4831299267669484}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4943269938264730}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4020129340858580}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmCollarbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4001707062467736}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4304952461659156}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -817,7 +818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4786979505955406}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmCollarbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4813812843189136}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4504012333746180}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4995739712520398}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -877,7 +878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4105522987854472}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4334041824707218}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,7 +908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4446896303250866}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4133640996074370}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4060794177643290}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4163221029812036}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +970,7 @@ GameObject:
   - component: {fileID: 4528205626496016}
   - component: {fileID: 33535342218298104}
   - component: {fileID: 23055364174920234}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Eyes_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,7 +985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4122585348768254}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +1000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4839175383458736}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4632375059987174}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub001Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1029,7 +1030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4853049416216962}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLLegDigit11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4894498014186630}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1059,7 +1060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4478931296779968}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4707288996991536}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1090,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4961198319695634}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,7 +1105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4594790568776818}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4663830242258944}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterHub003Bone005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4583820760573084}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLArmDigit22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4042600494080672}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4697762844373146}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterLLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1179,7 +1180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4152257519307650}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmDigit12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4201359058668866}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: MonsterRArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2586,6 +2587,101 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449598621760032}
   m_Mesh: {fileID: 4300010, guid: c230b9246bce7bf41bc8bd813b5e70e3, type: 3}
+--- !u!82 &82576796671150666
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1279449335465234}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 96a1ba8bf0b47c34bad45d460579605a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95888501816901786
 Animator:
   serializedVersion: 3
@@ -2791,16 +2887,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1279449335465234}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Speed: 1.5
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 100
-  m_StoppingDistance: 2
-  m_AutoTraverseOffMeshLink: 1
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
+  m_AutoRepath: 0
+  m_Height: 1
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 3
   m_ObstacleAvoidanceType: 1

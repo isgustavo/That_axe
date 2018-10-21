@@ -99,7 +99,6 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         rb.isKinematic = false;
-        Debug.Log(angularVelocity.x);
         if (Mathf.Abs((int)angularVelocity.x) < angularVelocityThreshold)
         {
             rb.useGravity = true;

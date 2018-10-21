@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 [RequireComponent (typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
 {
     protected NavMeshAgent agent;
@@ -11,6 +12,7 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
     protected Transform player;
 
     protected Renderer rend;
+    protected AudioSource audioSource;
 
     [SerializeField]
     private GameObject monsterHud;
@@ -18,6 +20,7 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
     public void OnCollisionEnterEvent()
     {
         agent.isStopped = true;
+        audioSource.Stop();
         animator.SetTrigger("GetHit");
     }
 
@@ -49,6 +52,8 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
     {
         transform.position = position;
         gameObject.SetActive(true);
+
+        agent.SetDestination(player.position);
     }
 
     private void Awake()
@@ -57,6 +62,7 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
         animator = GetComponent<Animator>();
 
         rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected void OnEnable()
@@ -78,17 +84,23 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
         monsterHud.SetActive(true);
         rend.material.SetFloat("_SliceAmount", 0);
 
-        agent.SetDestination(player.position);
-
-        //animator.SetTrigger("Walk");
+        
+        audioSource.Play();
     }
 
-    private void Start()
+    protected void Update()
     {
-        //Debug.Log("START");
-       // agent.SetDestination(player.position);
-
-        //animator.SetTrigger("Walk");
+        /*if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    audioSource.Stop();
+                    animator.SetTrigger("Attack");
+                }
+            }
+        }*/
     }
 
 }
