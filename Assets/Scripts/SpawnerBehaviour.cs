@@ -23,6 +23,10 @@ public class SpawnerBehaviour : MonoBehaviour
 
     protected List<ISpawnebleObject> objectPool = new List<ISpawnebleObject>();
 
+    public void OnStartGame()
+    {
+        StartCoroutine(SpawnObjectCoroutine());
+    }
    
     protected Vector3 GetSpawnPosition()
     {

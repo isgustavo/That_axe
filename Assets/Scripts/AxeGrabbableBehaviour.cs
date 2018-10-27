@@ -27,6 +27,8 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     [SerializeField]
     private UnityEvent OnGrabBegin;
     [SerializeField]
+    private UnityEvent OnFirstGrabBegin;
+    [SerializeField]
     private UnityEvent OnThrown;
     [SerializeField]
     private UnityEvent OnAttacking;
@@ -83,6 +85,8 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     private float returnArcZ = 10f;
     private float journeyLength;
 
+    private bool isFirstGrab = true;
+
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
        
@@ -90,6 +94,12 @@ public class AxeGrabbableBehaviour : OVRGrabbable
         m_grabbedCollider = grabPoint;
         rb.isKinematic = true;
         rb.useGravity = false;
+
+        if (isFirstGrab)
+        {
+            isFirstGrab = false;
+            OnFirstGrabBegin.Invoke();
+        }
 
         axeMeshTransform.rotation = new Quaternion(0, 0, 0, 0);
         isAvailableToReturn = false;
