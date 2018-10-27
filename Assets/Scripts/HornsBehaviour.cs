@@ -26,6 +26,9 @@ public class HornsBehaviour : MonoBehaviour {
 
     private void OnPlayTroops()
     {
-        troopsAudio.Play();
+        if(troopsAudio.isActiveAndEnabled)
+        {
+            troopsAudio.Play();
+        }
     }
 }

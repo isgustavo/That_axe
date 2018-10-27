@@ -11,6 +11,8 @@ public class AxeSoundBehaviour : MonoBehaviour
     protected AudioClip returningAudioClip;
     [SerializeField]
     protected AudioClip collisionAudioClip;
+    [SerializeField]
+    protected AudioClip monsterCollisionAudioClip;
 
     protected AudioSource audioSource;
 
@@ -54,7 +56,15 @@ public class AxeSoundBehaviour : MonoBehaviour
         audioSource.Play();
     }
 
-    protected void Start()
+    public void PlayMonsterCollisionAudio()
+    {
+        audioSource.Stop();
+        audioSource.clip = monsterCollisionAudioClip;
+        audioSource.loop = false;
+        audioSource.Play();
+    }
+
+    protected void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }

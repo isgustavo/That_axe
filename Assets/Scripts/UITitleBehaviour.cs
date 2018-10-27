@@ -17,8 +17,9 @@ public class UITitleBehaviour : MonoBehaviour {
     private bool isSpeechOnce = false;
 
     private string initText = "Call u axe like Thor God of Thunder or Kratos God of War and say <<Start>> to play";
-    private string speechWithoutAxe = "Call u axe first";
-    private string grabAxeAfterSpeech = "Now say <<Start>>";
+    private string speechWithoutAxeText = "Call u axe first";
+    private string grabAxeAfterSpeechText = "Now say <<Start>>";
+    private string endGameText = "There is not failure in training! Say <<Start>> to play";
 
 	void Start () {
 
@@ -36,7 +37,7 @@ public class UITitleBehaviour : MonoBehaviour {
     {
         isAxeGrabbed = true;
         
-        subtext.text = grabAxeAfterSpeech;
+        subtext.text = grabAxeAfterSpeechText;
         
     }
 
@@ -45,7 +46,7 @@ public class UITitleBehaviour : MonoBehaviour {
         if (!isAxeGrabbed)
         {
             isSpeechOnce = true;
-            subtext.text = speechWithoutAxe;
+            subtext.text = speechWithoutAxeText;
         }
         else
         {

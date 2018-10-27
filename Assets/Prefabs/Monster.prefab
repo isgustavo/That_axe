@@ -359,9 +359,10 @@ GameObject:
   - component: {fileID: 114187213982342204}
   - component: {fileID: 114350044285316184}
   - component: {fileID: 82576796671150666}
+  - component: {fileID: 114844988302117340}
   m_Layer: 13
   m_Name: Monster
-  m_TagString: Ground
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2600,7 +2601,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2712,6 +2713,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterHud: {fileID: 1313409746602902}
+  OnStartWalkingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114844988302117340}
+        m_MethodName: PlayWalkingAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDissolveEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114844988302117340}
+        m_MethodName: PlayDissolveAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnAttackEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114844988302117340}
+        m_MethodName: PlayAttakingAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114350044285316184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2724,6 +2773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionTag: Axe
+  justOneTime: 1
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2756,6 +2806,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114844988302117340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1279449335465234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f7155f1a0036448bf3315c92e65485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingAudioClip: {fileID: 8300000, guid: 96a1ba8bf0b47c34bad45d460579605a, type: 3}
+  dissolveAudioClip: {fileID: 8300000, guid: d27e9a95a83c25047bdf56c6b22fcb69, type: 3}
+  AttakingAudioClip: {fileID: 8300000, guid: 1919502117622344fb6003d14dfa2bce, type: 3}
 --- !u!136 &136025635383568192
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2892,7 +2956,7 @@ NavMeshAgent:
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 100
-  m_StoppingDistance: 1
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 0

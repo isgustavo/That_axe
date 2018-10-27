@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 [RequireComponent (typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -16,6 +17,12 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
 
     [SerializeField]
     private GameObject monsterHud;
+    [SerializeField]
+    private UnityEvent OnStartWalkingEvent;
+    [SerializeField]
+    private UnityEvent OnDissolveEvent;
+    [SerializeField]
+    private UnityEvent OnAttackEvent;
 
     public void OnCollisionEnterEvent()
     {
@@ -33,6 +40,7 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
     protected IEnumerator DissolverCoroutine()
     {
         float sliceAmount = 0;
+        OnDissolveEvent.Invoke();
         while (sliceAmount <= 1)
         {
             sliceAmount += Time.deltaTime;
@@ -70,7 +78,7 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
 
         if (player == null)
         {
-            GameObject obj = GameObject.FindGameObjectWithTag("Player");
+            GameObject obj = Camera.main.gameObject;
             if (obj == null)
             {
                 gameObject.SetActive(false);
@@ -84,23 +92,22 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
         monsterHud.SetActive(true);
         rend.material.SetFloat("_SliceAmount", 0);
 
-        
-        audioSource.Play();
+        OnStartWalkingEvent.Invoke();
     }
 
     protected void Update()
     {
-        /*if (!agent.pathPending)
+        if (!agent.pathPending)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                 {
-                    audioSource.Stop();
+                    OnAttackEvent.Invoke();
                     animator.SetTrigger("Attack");
                 }
             }
-        }*/
+        }
     }
 
 }

@@ -6,8 +6,9 @@ public enum AxeState
 {
     None,
     Static,
-    Attacking,
+    //Attacking,
     Thrown,
+    Grabbled,
     Travelling,
     Returning
 }
@@ -30,6 +31,8 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     private UnityEvent OnFirstGrabBegin;
     [SerializeField]
     private UnityEvent OnThrown;
+    [SerializeField]
+    private UnityEvent OnGrabbled;
     [SerializeField]
     private UnityEvent OnAttacking;
     [SerializeField]
@@ -56,12 +59,15 @@ public class AxeGrabbableBehaviour : OVRGrabbable
                 case AxeState.Thrown:
                     OnThrown.Invoke();
                     break;
+                case AxeState.Grabbled:
+                    OnGrabbled.Invoke();
+                    break;
                 case AxeState.Travelling:
                     OnTravelling.Invoke();
                     break;
-                case AxeState.Attacking:
-                    OnAttacking.Invoke();
-                    break;
+                //case AxeState.Attacking:
+                //    OnAttacking.Invoke();
+                //    break;
                 case AxeState.Returning:
                     OnReturning.Invoke();
                         break;
@@ -132,7 +138,7 @@ public class AxeGrabbableBehaviour : OVRGrabbable
 
     public void OnAxeCalled()
     {
-       if ((axeState == AxeState.Travelling || axeState == AxeState.Thrown)
+       if ((axeState == AxeState.Travelling || axeState == AxeState.Thrown || axeState == AxeState.Grabbled)
             && isAvailableToReturn)
         {
             rb.velocity = Vector3.zero;
@@ -169,6 +175,19 @@ public class AxeGrabbableBehaviour : OVRGrabbable
         axeState = AxeState.Thrown;
     }
 
+    public void OnAxeMonsterCollided()
+    {
+        if (axeState == AxeState.Returning)
+        {
+            return;
+        }
+
+        rb.useGravity = false;
+        rb.isKinematic = true;
+
+        axeState = AxeState.Grabbled;
+    }
+
     protected IEnumerator WaitForReturnCoroutine()
     {
         yield return new WaitForSeconds(returningTimeThreshold);
@@ -189,15 +208,16 @@ public class AxeGrabbableBehaviour : OVRGrabbable
             case AxeState.Static:
                 if (OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude > 3)
                 {
-                    axeState = AxeState.Attacking;
+                    //axeState = AxeState.Attacking;
+                    OnAttacking.Invoke();
                 }
                 break;
-            case AxeState.Attacking:
-                if (OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude < 2)
-                {
-                    axeState = AxeState.Static;
-                }
-                break;
+            //case AxeState.Attacking:
+            //    if (OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude < 2)
+            //    {
+            //        axeState = AxeState.Static;
+            //    }
+            //    break;
             case AxeState.Travelling:
                 axeMeshTransform.Rotate(0, 0, rotationSpeedWhenTravelling * Time.deltaTime, Space.Self);
                 break;
