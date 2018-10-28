@@ -84,6 +84,7 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     private Vector3 linearVelocityWhenGrabEnd;
     private Vector3 angularVelocityWhenGrabEnd;
     private bool isAvailableToReturn = true;
+    private bool throwedToClose = false;
     private float returningTimeThreshold = .5f;
     private float returningStartTime;
     private Vector3 returningStartPosition;
@@ -147,16 +148,25 @@ public class AxeGrabbableBehaviour : OVRGrabbable
             returningStartTime = Time.time;
             returningStartPosition = gameObject.GetComponent<Rigidbody>().transform.position;
 
-            if (returningStartPosition.x > 0)
+            journeyLength = Vector3.Distance(returningStartPosition, rHand.position);
+
+            if (journeyLength < 6)
             {
-                returningMiddlePosition = returningStartPosition + (rHand.position - returningStartPosition) / 2 + (-Vector3.forward * returnArcZ);
+                throwedToClose = true;
             }
             else
             {
-                returningMiddlePosition = returningStartPosition + (rHand.position - returningStartPosition) / 2 + (Vector3.forward * returnArcZ);
+                throwedToClose = false;
+                if (transform.forward.z < 0)
+                {
+                    returningMiddlePosition = returningStartPosition + (rHand.position - returningStartPosition) / 2 + (-Vector3.forward * returnArcZ);
+                }
+                else
+                {
+                    returningMiddlePosition = returningStartPosition + (rHand.position - returningStartPosition) / 2 + (Vector3.forward * returnArcZ);
+                }
+                
             }
-
-            journeyLength = Vector3.Distance(returningStartPosition, rHand.position);
 
             axeState = AxeState.Returning;
         }
@@ -229,11 +239,19 @@ public class AxeGrabbableBehaviour : OVRGrabbable
                 float distCovered = (Time.time - returningStartTime) * journeyLength;
                 float fracJourney = distCovered / journeyLength;
 
-                Vector3 m1 = Vector3.Lerp(returningStartPosition, returningMiddlePosition, fracJourney);
-                Vector3 m2 = Vector3.Lerp(returningMiddlePosition, rHand.position, fracJourney);
+                if (throwedToClose)
+                {
 
-                transform.position = Vector3.Lerp(m1, m2, fracJourney);
+                    transform.position = Vector3.Lerp(returningStartPosition, rHand.position, fracJourney * 2);
+                }
+                else
+                {
+                    Vector3 m1 = Vector3.Lerp(returningStartPosition, returningMiddlePosition, fracJourney);
+                    Vector3 m2 = Vector3.Lerp(returningMiddlePosition, rHand.position, fracJourney);
 
+                    transform.position = Vector3.Lerp(m1, m2, fracJourney);
+                }
+                
                 axeMeshTransform.transform.Rotate(0, 0, rotationSpeedWhenReturning * Time.deltaTime, Space.Self);
                 break;
         }
