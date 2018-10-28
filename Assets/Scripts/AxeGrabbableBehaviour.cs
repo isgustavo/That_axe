@@ -41,6 +41,8 @@ public class AxeGrabbableBehaviour : OVRGrabbable
     private UnityEvent OnReturning;
 
     private Rigidbody rb;
+    private Vector3 normalGravity = new Vector3(0f, -9.81f, 0f);
+    private Vector3 travellingGravity = new Vector3(0f, -2.81f, 0f);
 
     private AxeState _axeState = AxeState.Thrown;
     protected AxeState axeState
@@ -118,12 +120,15 @@ public class AxeGrabbableBehaviour : OVRGrabbable
         rb.isKinematic = false;
         if (Mathf.Abs((int)angularVelocity.x) < angularVelocityThreshold)
         {
+            Physics.gravity = normalGravity;
             rb.useGravity = true;
             rb.velocity = linearVelocity;
         }
         else
         {
             rb.velocity = linearVelocity * 2;
+            Physics.gravity = travellingGravity;
+            rb.useGravity = true;
             axeState = AxeState.Travelling;
         }
 
