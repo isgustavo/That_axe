@@ -15,26 +15,39 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
     protected Renderer rend;
     protected AudioSource audioSource;
 
+    protected bool isAttack = false;
+
     [SerializeField]
     private GameObject monsterHud;
     [SerializeField]
     private UnityEvent OnStartWalkingEvent;
     [SerializeField]
+    private UnityEvent OnMonsterHitted;
+    [SerializeField]
     private UnityEvent OnDissolveEvent;
     [SerializeField]
     private UnityEvent OnAttackEvent;
+    [SerializeField]
+    private UnityEvent OnEndGameConditionEvent;
 
     public void OnCollisionEnterEvent()
     {
-        agent.isStopped = true;
-        audioSource.Stop();
-        animator.SetTrigger("GetHit");
+        if (!isAttack)
+        {
+            agent.isStopped = true;
+            audioSource.Stop();
+            animator.SetTrigger("GetHit");
+        }
     }
 
     public void OnCollisionExitEvent()
     {
-        monsterHud.SetActive(false);
-        StartCoroutine(DissolverCoroutine()); 
+        if (!isAttack)
+        {
+            monsterHud.SetActive(false);
+            OnMonsterHitted.Invoke();
+            StartCoroutine(DissolverCoroutine());
+        }
     }
 
     protected IEnumerator DissolverCoroutine()
@@ -75,7 +88,6 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
 
     protected void OnEnable()
     {
-
         if (player == null)
         {
             GameObject obj = Camera.main.gameObject;
@@ -89,6 +101,7 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
             }
         }
 
+        isAttack = false;
         monsterHud.SetActive(true);
         rend.material.SetFloat("_SliceAmount", 0);
 
@@ -97,17 +110,30 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
 
     protected void Update()
     {
-        if (!agent.pathPending)
+        if (!agent.pathPending && !isAttack)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                 {
-                    OnAttackEvent.Invoke();
+                    isAttack = true;
                     animator.SetTrigger("Attack");
+                    OnAttackEvent.Invoke();
+                    StartCoroutine(LazyEndGameCoroutine());
                 }
             }
         }
     }
 
+    protected IEnumerator LazyEndGameCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        OnEndGameConditionEvent.Invoke();
+    }
+
+    public void DestroyMonster()
+    {
+        monsterHud.SetActive(false);
+        StartCoroutine(DissolverCoroutine());
+    }
 }

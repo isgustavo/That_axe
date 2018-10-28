@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HornsBehaviour : MonoBehaviour {
 
@@ -22,6 +20,11 @@ public class HornsBehaviour : MonoBehaviour {
             Invoke("OnPlayTroops", 2f);
         }
         
+    }
+
+    public void OnEndGame()
+    {
+        hornsAudio.Stop();
     }
 
     private void OnPlayTroops()

@@ -27,7 +27,12 @@ public class SpawnerBehaviour : MonoBehaviour
     {
         StartCoroutine(SpawnObjectCoroutine());
     }
-   
+
+    public void OnEndGame()
+    {
+        StopAllCoroutines();
+    }
+
     protected Vector3 GetSpawnPosition()
     {
         int randomPoint = Random.Range(0, spawnPoints.Length);

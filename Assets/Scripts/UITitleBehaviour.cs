@@ -17,9 +17,9 @@ public class UITitleBehaviour : MonoBehaviour {
     private bool isSpeechOnce = false;
 
     private string initText = "Call u axe like Thor God of Thunder or Kratos God of War and say <<Start>> to play";
-    private string speechWithoutAxeText = "Call u axe first";
+    private string speechWithoutAxeText = "Call u axe at first";
     private string grabAxeAfterSpeechText = "Now say <<Start>>";
-    private string endGameText = "There is not failure in training! Say <<Start>> to play";
+    private string endGameText = "There is no failure in training! Say<<Start>> to play";
 
 	void Start () {
 
@@ -31,6 +31,14 @@ public class UITitleBehaviour : MonoBehaviour {
 
         subtext.text = initText;
 
+    }
+
+    public void OnRestart()
+    {
+        recognizer.Start();
+        subtext.text = endGameText;
+        panel.SetActive(true);
+        
     }
 
     public void OnFirstGrab()
@@ -50,6 +58,7 @@ public class UITitleBehaviour : MonoBehaviour {
         }
         else
         {
+            recognizer.Stop();
             panel.SetActive(false);
             OnStartGame.Invoke();
         }

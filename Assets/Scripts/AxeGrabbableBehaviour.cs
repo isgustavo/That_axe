@@ -164,15 +164,18 @@ public class AxeGrabbableBehaviour : OVRGrabbable
 
     public void OnAxeCollided()
     {
-        if (axeState == AxeState.Returning)
+        if (gameObject.activeInHierarchy)
         {
-            return;
+            if (axeState == AxeState.Returning)
+            {
+                return;
+            }
+
+            rb.useGravity = false;
+            rb.isKinematic = true;
+
+            axeState = AxeState.Thrown;
         }
-
-        rb.useGravity = false;
-        rb.isKinematic = true;
-
-        axeState = AxeState.Thrown;
     }
 
     public void OnAxeMonsterCollided()
