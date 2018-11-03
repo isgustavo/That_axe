@@ -186,8 +186,12 @@ public class AxeGrabbableBehaviour : OVRGrabbable
                 return;
             }
 
-            rb.useGravity = false;
-            rb.isKinematic = true;
+            if (rb != null)
+            {
+                rb.useGravity = false;
+                rb.isKinematic = true;
+            }
+
 
             axeState = AxeState.Thrown;
         }
@@ -200,8 +204,11 @@ public class AxeGrabbableBehaviour : OVRGrabbable
             return;
         }
 
-        rb.useGravity = false;
-        rb.isKinematic = true;
+        if (rb != null)
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
+        }
 
         axeState = AxeState.Grabbled;
     }

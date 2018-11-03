@@ -5,7 +5,7 @@ public class HornsBehaviour : MonoBehaviour {
     [SerializeField]
     private AudioSource hornsAudio;
     [SerializeField]
-    private AudioSource troopsAudio;
+    private AudioSource[] troopsAudio;
 
 
     public void OnStartGame()
@@ -25,13 +25,21 @@ public class HornsBehaviour : MonoBehaviour {
     public void OnEndGame()
     {
         hornsAudio.Stop();
+        for (int i = 0; i < troopsAudio.Length; i++)
+        {
+            troopsAudio[i].Stop();
+        }
+        
     }
 
     private void OnPlayTroops()
     {
-        if(troopsAudio.isActiveAndEnabled)
+        for (int i = 0; i < troopsAudio.Length; i++)
         {
-            troopsAudio.Play();
+            if (troopsAudio[i].isActiveAndEnabled)
+            {
+                troopsAudio[i].Play();
+            }
         }
     }
 }

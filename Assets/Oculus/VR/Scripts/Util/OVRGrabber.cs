@@ -242,7 +242,7 @@ public class OVRGrabber : MonoBehaviour
         }
 
         // Disable grab volumes to prevent overlaps
-        GrabVolumeEnable(false);
+        //GrabVolumeEnable(false);
 
         if (closestGrabbable != null)
         {
@@ -365,7 +365,7 @@ public class OVRGrabber : MonoBehaviour
         }
 
         // Re-enable grab volumes to allow overlap events
-        GrabVolumeEnable(true);
+        //GrabVolumeEnable(true);
     }
 
     protected void GrabbableRelease(Vector3 linearVelocity, Vector3 angularVelocity)

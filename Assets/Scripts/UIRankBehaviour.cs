@@ -22,18 +22,18 @@ public class UIRankBehaviour : MonoBehaviour
     {
         rankPanel.SetActive(true);
 
-        if (monsterHittedCount < 2)
+        if (monsterHittedCount < 10)
         {
             rankValue.text = "D";
-        } else if (monsterHittedCount < 4)
+        } else if (monsterHittedCount < 15)
         {
             rankValue.text = "C";
         }
-        else if (monsterHittedCount < 6)
+        else if (monsterHittedCount < 20)
         {
             rankValue.text = "B";
         }
-        else if (monsterHittedCount < 8)
+        else if (monsterHittedCount < 25)
         {
             rankValue.text = "A";
         }

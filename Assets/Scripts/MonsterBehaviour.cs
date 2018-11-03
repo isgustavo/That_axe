@@ -30,6 +30,15 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
     [SerializeField]
     private UnityEvent OnEndGameConditionEvent;
 
+    public void OnPunchEvent()
+    {
+        agent.isStopped = true;
+        audioSource.Stop();
+        animator.SetTrigger("GetHit");
+
+        OnCollisionExitEvent();
+    }
+
     public void OnCollisionEnterEvent()
     {
         if (!isAttack)

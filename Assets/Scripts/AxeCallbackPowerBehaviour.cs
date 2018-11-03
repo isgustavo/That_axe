@@ -26,7 +26,10 @@ public class AxeCallbackPowerBehaviour : MonoBehaviour {
     {
         while (true)
         {
-            if (rightHandAnchorTransform.position.y > centerEyeAnchorTransform.position.y)
+            
+            if (OVRInput.IsControllerConnected(OVRInput.Controller.RTouch)
+                && OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger, OVRInput.Controller.RTouch) == 0
+                && rightHandAnchorTransform.position.y > centerEyeAnchorTransform.position.y)
             {
                 OnAxeCallbackEvent.Invoke();
             }
