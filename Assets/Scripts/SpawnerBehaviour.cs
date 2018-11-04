@@ -61,10 +61,10 @@ public class SpawnerBehaviour : MonoBehaviour
             }
         }
 
-        if (objectPool.Count < maxSize)
-        {
-            return CreateObj();
-        }
+        //if (objectPool.Count < maxSize)
+        //{
+        //    return CreateObj();
+        //}
 
         return null;
 
@@ -98,6 +98,11 @@ public class SpawnerBehaviour : MonoBehaviour
         if (startOnAwake)
         {
             StartCoroutine(SpawnObjectCoroutine());
+        }
+
+        for (int i = 0; i < maxSize; i++)
+        {
+            CreateObj();
         }
     }
 

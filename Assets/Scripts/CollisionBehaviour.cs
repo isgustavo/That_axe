@@ -16,18 +16,22 @@ public class CollisionBehaviour : MonoBehaviour
 
     private Collider col;
 
+    private bool triggerEnter = false;
+
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == collisionTag)
+        if (other.transform.tag == collisionTag && !triggerEnter)
         {
+            triggerEnter = true;
             OnCollisionEnterEvent.Invoke();     
         }
     }
 
     protected void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == collisionTag) 
+        if (other.transform.tag == collisionTag && triggerEnter) 
         {
+            triggerEnter = false;
             OnCollisionExitEvent.Invoke();
             if (justOneTime)
             {

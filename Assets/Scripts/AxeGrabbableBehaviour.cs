@@ -192,7 +192,6 @@ public class AxeGrabbableBehaviour : OVRGrabbable
                 rb.isKinematic = true;
             }
 
-
             axeState = AxeState.Thrown;
         }
     }
@@ -219,11 +218,20 @@ public class AxeGrabbableBehaviour : OVRGrabbable
         isAvailableToReturn = true;
     }
 
+    protected void SetAvailableToReturn()
+    {
+        isAvailableToReturn = true;
+    }
+
     protected override void Start()
     {
         rb = GetComponent<Rigidbody>();
         returningStartPosition = transform.position;
         m_grabbedKinematic = rb.isKinematic;
+
+        isAvailableToReturn = false;
+        Invoke("SetAvailableToReturn", 5f);
+       
     }
 
     protected void Update()

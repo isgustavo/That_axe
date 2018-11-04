@@ -6,6 +6,8 @@ public class HornsBehaviour : MonoBehaviour {
     private AudioSource hornsAudio;
     [SerializeField]
     private AudioSource[] troopsAudio;
+    [SerializeField]
+    private AudioSource environment;
 
 
     public void OnStartGame()
@@ -13,6 +15,11 @@ public class HornsBehaviour : MonoBehaviour {
         if (hornsAudio != null)
         {
             hornsAudio.Play();
+        }
+
+        if (environment != null)
+        {
+            environment.Stop();
         }
 
         if (troopsAudio != null)
@@ -29,7 +36,12 @@ public class HornsBehaviour : MonoBehaviour {
         {
             troopsAudio[i].Stop();
         }
-        
+
+        if (environment != null)
+        {
+            environment.Play();
+        }
+
     }
 
     private void OnPlayTroops()

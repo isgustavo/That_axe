@@ -16,8 +16,11 @@ public class AxeSoundBehaviour : MonoBehaviour
 
     protected AudioSource audioSource;
 
+    bool firstGrabSound = true;
+
     public void PlayGrabAudio()
-    {
+    { 
+
         audioSource.Stop();
         audioSource.clip = grabAudioClip;
         audioSource.loop = false;
@@ -50,6 +53,12 @@ public class AxeSoundBehaviour : MonoBehaviour
 
     public void PlayCollisionAudio()
     {
+        if (firstGrabSound)
+        {
+            firstGrabSound = false;
+            return;
+        }
+
         audioSource.Stop();
         audioSource.clip = collisionAudioClip;
         audioSource.loop = false;

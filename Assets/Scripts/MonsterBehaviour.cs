@@ -93,6 +93,8 @@ public class MonsterBehaviour : MonoBehaviour, ISpawnebleObject
 
         rend = GetComponentInChildren<SkinnedMeshRenderer>();
         audioSource = GetComponent<AudioSource>();
+
+        gameObject.SetActive(false);
     }
 
     protected void OnEnable()
